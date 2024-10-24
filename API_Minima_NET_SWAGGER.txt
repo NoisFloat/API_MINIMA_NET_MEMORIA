@@ -1,0 +1,18 @@
+dotnet new web -o PizzaStore -f net8.0
+cd PizzaStore
+dotnet add package Swashbuckle.AspNetCore --version 6.5.0 #Documentacion de Swagger y Json "Hasta donde tengo entendido"
+
+dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 8.0 (Para bases de datos SQLite)(En Memoria)
+
+//Recuerda añadir tu representante de db y conexion
+class PizzaDb : DbContext
+{
+    public PizzaDb(DbContextOptions options) : base(options) { }
+    public DbSet<Pizza> Pizzas { get; set; } = null!;
+}
+
+
+//Recuerda añadir los servicios
+builder.Services.AddDbContext<PizzaDb>(options => options.UseInMemoryDatabase("items"));
+
+https://learn.microsoft.com/es-es/training/modules/build-web-api-minimal-database/3-exercise-add-entity-framework-core
