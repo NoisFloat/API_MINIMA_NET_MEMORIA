@@ -1,0 +1,7 @@
+./vs
+# Visual Studio Code
+.vscode/
+
+# Visual Studio temporary files
+*.vs/
+*.vscode/
